@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <bean id="serverInitializer" class="com.sinkinchan.rpc.netty.ServerInitializer"
+          init-method="bind">
+        <property name="timeout" value="${app.channel.readtimeout}" />
+        <property name="port" value="${app.channel.port}" />
+        <!--<property name="handlerDispatcher" ref="handlerDispatcher" />
+        <property name="requestType" value="${app.requestType}" />-->
+
+
+
+    </bean>
+
+   <!-- <bean id="handlerDispatcher" class="com.cp.dispatcher.HandlerDispatcher">
+        <property name="messageExecutor">
+            <bean class="com.cp.domain.FiexThreadPoolExecutor"
+                  destroy-method="shutdown">
+                <constructor-arg value="${app.handler.pool.corePoolSize}" />
+                <constructor-arg value="${app.handler.pool.maximumPoolSize}" />
+                <constructor-arg value="${app.handler.pool.keepAliveSecond}" />
+                <constructor-arg value="${app.handler.pool.name}" />
+            </bean>
+        </property>
+        <property name="sleepTime" value="${app.handler.sleepTime}" />
+        <property name="handlerMap" ref="gameHandlerMap" />
+    </bean>
+
+    <bean id="gameHandlerMap" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <entry key="999">
+                    <bean class="com.cp.handler.InitHandler">
+                    </bean>
+                </entry>
+            </map>
+        </constructor-arg>
+    </bean>-->
+
+</beans>
